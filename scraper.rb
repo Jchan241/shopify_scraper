@@ -3,8 +3,11 @@ require 'open-uri'
 require 'csv'
 
 url = 'https://kflsupermarket.com.au/products.json?limit=250&page=2'
+page = '0'
 
-products_serialized = open(url).read
+urlPlusPage = "#{url}#{page}"
+
+products_serialized = open(urlPlusPage).read
 products = JSON.parse(products_serialized)['products']
 
 # puts products.first['title']
